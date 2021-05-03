@@ -20,4 +20,17 @@ public class EmployeeService {
     public Employee getEmployeeById(Long empId){
         return employeeRepository.getOne(empId);
     }
+
+    public Employee addEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Employee modifyEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    public Boolean deleteEmployee(Long empId) {
+        employeeRepository.deleteById(empId);
+        return true;
+    }
 }

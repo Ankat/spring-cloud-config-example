@@ -3,10 +3,7 @@ package io.ankat.controller;
 import io.ankat.entity.Employee;
 import io.ankat.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,20 @@ public class EmployeeController {
     @GetMapping(path = "/{empId}")
     public Employee getEmployeeById(@PathVariable Long empId) {
         return employeeService.getEmployeeById(empId);
+    }
+
+    @PostMapping
+    public Employee addEmployee(@RequestBody Employee employee){
+        return employeeService.addEmployee(employee);
+    }
+
+    @PutMapping
+    public Employee modifyEmployee(@RequestBody Employee employee){
+        return employeeService.modifyEmployee(employee);
+    }
+
+    @DeleteMapping(path = "/{empId}")
+    public Boolean deleteEmployee(@PathVariable Long empId){
+        return employeeService.deleteEmployee(empId);
     }
 }
